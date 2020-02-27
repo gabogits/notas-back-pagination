@@ -4,6 +4,25 @@ import path from 'path';
 import cors from 'cors';
 
 const app = express();
+//Conexion a DB
+
+import mongoose from 'mongoose';
+//const uri = 'mongodb://localhost:27017/udemy';
+
+//conexión en la nube
+const uri = 'mongodb+srv://user_udemy:QV9U7f0mWk53TYrb@cluster0-ajnw7.mongodb.net/udemy?retryWrites=true&w=majority';
+
+const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }; //estas son configuraciones de moongose, 
+//para hacer conexiones con string useNewUrlParser: true y es para poder utilizar esta funcion de mongoose 
+
+
+// Or using promises
+mongoose.connect(uri, options).then(
+  () => { console.log('conectado a mongo DB') },
+  err => { console.log(err) }
+);
+
+
 app.use(morgan('tiny')) //la configuracion de express va utilizar morgan
 
 app.use(cors());
@@ -19,7 +38,7 @@ app.get('/', function (req, res) {
   res.send('Hola Mundo chavos');
 });
 */
-
+app.use('/api', require('./routes/nota'));
 
 // Middleware para Vue.js router modo history
 const history = require('connect-history-api-fallback');
@@ -39,3 +58,7 @@ app.listen(app.get('puerto'), function () {
 //nos sirve para configurar nuestro servidor para que puedan hacer peticion desde otros dominios
 
 //cuando nosotros a nuestra aplicacion desde otros dominios, a veces podemos tener bloqueos de cors
+
+
+//las rutas son las interacciones que podemos hacer con nuestro servidor
+
