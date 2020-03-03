@@ -7,10 +7,10 @@ const app = express();
 //Conexion a DB
 
 import mongoose from 'mongoose';
-const uri = 'mongodb://localhost:27017/udemy';
+//const uri = 'mongodb://localhost:27017/udemy';
 
 //conexión en la nube
-//const uri = 'mongodb+srv://user_udemy:QV9U7f0mWk53TYrb@cluster0-ajnw7.mongodb.net/udemy?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://user_udemy:QV9U7f0mWk53TYrb@cluster0-ajnw7.mongodb.net/udemy?retryWrites=true&w=majority';
 
 const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }; //estas son configuraciones de moongose, 
 //para hacer conexiones con string useNewUrlParser: true y es para poder utilizar esta funcion de mongoose 
